@@ -80,7 +80,11 @@ export default {
   },
   computed: {
     inputId () {
-      return this.for
+      if (this.for) {
+        return this.for
+      } else if(this.formEl) {
+        return this.formEl.id
+      }
     },
     classObject () {
       return {
