@@ -42,17 +42,17 @@ export default {
   },
   mounted () {
     this.formEl = this.$el.querySelector('input, textarea, select')
-    this.formEl.addEventListener('input', this.updateIsActive)
-    this.formEl.addEventListener('input', this.updateIsFocused)
-    this.formEl.addEventListener('blur', this.updateIsFocused)
-    this.formEl.addEventListener('focus', this.updateIsFocused)
-
-    if (!this.for) {
-      this.labelEl = this.$el.querySelector('label')
-      this.labelEl.addEventListener('click', this.focusFormEl)
-    }
-
-    this.dispatchInput()
+    setTimeout(()=>{
+      this.formEl.addEventListener('input', this.updateIsActive)
+      this.formEl.addEventListener('input', this.updateIsFocused)
+      this.formEl.addEventListener('blur', this.updateIsFocused)
+      this.formEl.addEventListener('focus', this.updateIsFocused)
+      if (!this.for) {
+        this.labelEl = this.$el.querySelector('label')
+        this.labelEl.addEventListener('click', this.focusFormEl)
+      }
+      this.dispatchInput()
+    }, 100)
   },
   beforeDestroy () {
     this.formEl.removeEventListener('input', this.updateIsActive)
